@@ -2,6 +2,8 @@
 # With much help from https://github.com/bnsreenu/python_for_microscopists/blob/master/239_train_emotion_detection/239_train_emotion_detection.py
 ##################
 
+# dataset --> https://www.kaggle.com/datasets/msambare/fer2013?resource=download
+
 """
 Train a deep learning model on facial emotion detection
 Dataset from: https://www.kaggle.com/msambare/fer2013
