@@ -12,8 +12,8 @@ def searchForTracks(sp):
         results = sp.search(q='track:' + title, type='track')
         time.sleep(1)
         items = results['tracks']['items']
-        if (len(items) > 0):
-            if (items[0]['artists'][0]['name'] == dataset['artist'][i]):
+        if len(items) > 0:
+            if items[0]['artists'][0]['name'] == dataset['artist'][i]:
                 tracks.append(items[0]['id'])
                 tracksForData.append([items[0]['id'], dataset['mood'][i]])
     with open('tracksInSpotify.csv', mode='w') as file:
