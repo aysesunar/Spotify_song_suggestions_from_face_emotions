@@ -9,7 +9,7 @@ from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 
 
-def splitDataset(dataset, seed, scoring):
+def splitDataset(dataset, seed):
     array = dataset.values
     X = array[:, 1:4]
     Y = array[:, 4]
@@ -19,13 +19,10 @@ def splitDataset(dataset, seed, scoring):
 
 
 def tryClassifiers(X_train, Y_train, seed, scoring):
-    models = []
-    models.append(('Linear Discriminant Analysis', LinearDiscriminantAnalysis()))
-    models.append(('K Neighbors', KNeighborsClassifier()))
-    models.append(('Decision Tree', DecisionTreeClassifier()))
-    models.append(('Logistic Regression', LogisticRegression(solver='liblinear', multi_class='ovr')))
-    models.append(('Support Vector Machine', SVC(gamma='auto')))
-    models.append(('Gaussian Naive Bayes', GaussianNB()))
+    models = [('Linear Discriminant Analysis', LinearDiscriminantAnalysis()), ('K Neighbors', KNeighborsClassifier()),
+              ('Decision Tree', DecisionTreeClassifier()),
+              ('Logistic Regression', LogisticRegression(solver='liblinear', multi_class='ovr')),
+              ('Support Vector Machine', SVC(gamma='auto')), ('Gaussian Naive Bayes', GaussianNB())]
 
     results = []
     names = []
@@ -57,7 +54,7 @@ def main():
     dataset = pandas.read_csv("songMoods.csv", names=['id', 'danceability', 'energy', 'valence', 'mood'])
     seed = 100
     scoring = 'accuracy'
-    X_train, X_validation, Y_train, Y_validation = splitDataset(dataset, seed, scoring)
+    X_train, X_validation, Y_train, Y_validation = splitDataset(dataset, seed)
     chosenModel = LogisticRegression(solver='liblinear', multi_class='ovr')
     model = checkModel(chosenModel, X_train, Y_train, X_validation, Y_validation)
     return model
