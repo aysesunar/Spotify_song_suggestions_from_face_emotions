@@ -29,7 +29,7 @@ def getAudioFeatures(sp, trackURIs):
         audioFeatures = sp.audio_features(trackURIs[i:i + max])
         time.sleep(1)
         for j in range(len(audioFeatures)):
-            if audioFeatures != None:
+            if audioFeatures[j] != None:
                 features.append(audioFeatures[j]['danceability'])
                 features.append(audioFeatures[j]['energy'])
                 features.append(audioFeatures[j]['valence'])
