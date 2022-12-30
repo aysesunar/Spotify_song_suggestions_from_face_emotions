@@ -17,33 +17,12 @@ while True:
     print("1 - Search for a Playlist")
     choice = int(input("Your Choice: "))
     if choice == 1:
-        # Get the Song Name.
-        searchQuery = input("Enter Playlist Name: ")
-        # Search for the Song.
-        searchResults = spotifyObject.search(searchQuery,2,0,"playlist")
-        print(searchResults)
-        #print(searchResults)
-        # Get required data from JSON response.
-        tracks_dict = searchResults['playlists']
-        tracks_items = tracks_dict['items']
-        song = tracks_items[0]['external_urls']['spotify']
-        # Open the Song in Web Browser
-        webbrowser.open(song)
-        print('Song has opened in your browser.')
+        searchQuery = input("Enter Playlist Id: ")
+        #example id=0mh2I0USWjpJkwe95XdqCU
+        playlist = spotifyObject.playlist(searchQuery)
+        webbrowser.open(playlist['external_urls']['spotify'])
+        print('Playlist has opened in your browser.')
     elif choice == 0:
         break
     else:
         print("Enter valid choice.")
-
-'''
-import pyautogui 
-import os
-import time
-os.system("spotify")
-time.sleep(5)
-pyautogui.hotkey('ctrl','l')
-pyautogui.write('Endure the silence',interval=0.1)
-
-for key in ['enter', 'pagedown', 'tab','enter','enter']:
-    time.sleep(2)
-'''
