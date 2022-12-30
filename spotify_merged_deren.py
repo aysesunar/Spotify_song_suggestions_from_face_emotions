@@ -16,7 +16,6 @@ def main():
     spotifyObject = spotipy.Spotify(auth=token)
     user = spotifyObject.current_user()
     #print(json.dumps(user,sort_keys=True, indent=4))
-    print("hey")
     if token:
         sp = spotipy.Spotify(auth=token)
         user = sp.current_user()
