@@ -29,7 +29,7 @@ window.maxsize(350, 400)
 window.minsize(350, 400)
 
 # Add image to background:
-background_image = Image.open("UI_background_image/4.jpg")
+background_image = Image.open("UI_background_image/3.jpg")
 img2 = background_image.resize((350,400))
 img = ImageTk.PhotoImage(img2)
 label = Label(window,image=img)

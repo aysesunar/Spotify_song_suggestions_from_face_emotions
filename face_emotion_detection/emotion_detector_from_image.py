@@ -52,7 +52,7 @@ class emotion_detector_from_image:
         cap.release()
         cv2.destroyAllWindows()
 
-        return emotion, cap
+        return emotion, frame
 
     def get_image(self, face_classifier):
         cap = cv2.VideoCapture(0)

@@ -1,6 +1,7 @@
 import numpy as np
 import time
-
+from PIL import Image
+import base64
 
 def getUserTracks(sp):
     results = []
@@ -38,7 +39,7 @@ def getAudioFeatures(sp, trackURIs):
     return featuresTotal
 
 
-def createPlaylist(sp, user, trackURIs, features, mood, model):
+def createPlaylist(sp, user, trackURIs, features, mood, model, frame):
     featuresArray = np.asarray(features, dtype=np.float32)
     predictions = model.predict(featuresArray)
     playlistSongs = []
@@ -51,10 +52,16 @@ def createPlaylist(sp, user, trackURIs, features, mood, model):
     userID = user['id']
     playlist = sp.user_playlist_create(userID, name=mood, public=True)
     playlistID = playlist['id']
+    if playlist['images'] == []:
+        try:
+            sp.playlist_upload_cover_image(playlistID, frame)
+        except:
+            print("Couldn't add cover image to playlist")
+
     sp.user_playlist_add_tracks(userID, playlistID, playlistSongs)
 
 
-def main(sp, user, model, mood):
+def main(sp, user, model, mood, frame):
     trackURIs, tracks = getUserTracks(sp)
     features = getAudioFeatures(sp, trackURIs)
-    createPlaylist(sp, user, trackURIs, features, mood, model)
+    createPlaylist(sp, user, trackURIs, features, mood, model, frame)
