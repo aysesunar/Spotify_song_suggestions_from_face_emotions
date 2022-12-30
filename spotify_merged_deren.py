@@ -9,7 +9,7 @@ def main():
     clientID = '322a5c047ccb4515b49404ed0d8f6065'
     clientSecret = '7818fc966d344e6c82b36c7442f710ee'
     redirectURI = 'http://google.com/' 
-    scope = 'user-library-read user-library-modify playlist-modify-public'
+    scope = 'user-library-read user-library-modify playlist-modify-public user-read-currently-playing user-read-playback-state user-modify-playback-state'
     oauth_object = spotipy.SpotifyOAuth(clientID,clientSecret,redirectURI,scope=scope)
     token_dict = oauth_object.get_access_token()
     token = token_dict['access_token']
