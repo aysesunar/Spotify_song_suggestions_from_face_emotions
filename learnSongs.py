@@ -7,7 +7,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
-
+from sklearn.neural_network import MLPClassifier
 
 def splitDataset(dataset, seed):
     array = dataset.values
@@ -22,7 +22,8 @@ def tryClassifiers(X_train, Y_train, seed, scoring):
     models = [('Linear Discriminant Analysis', LinearDiscriminantAnalysis()), ('K Neighbors', KNeighborsClassifier()),
               ('Decision Tree', DecisionTreeClassifier()),
               ('Logistic Regression', LogisticRegression(solver='liblinear', multi_class='ovr')),
-              ('Support Vector Machine', SVC(gamma='auto')), ('Gaussian Naive Bayes', GaussianNB())]
+              ('Support Vector Machine', SVC(gamma='auto')), ('Gaussian Naive Bayes', GaussianNB()),
+              ('Multi Layer Perceptron', MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(4, 2,1), random_state=1) )]
 
     results = []
     names = []
