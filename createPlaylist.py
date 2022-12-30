@@ -2,7 +2,7 @@ import numpy as np
 import time
 from PIL import Image
 import base64
-
+import open_playlist
 def getUserTracks(sp):
     results = []
     trackURIs = []
@@ -59,9 +59,12 @@ def createPlaylist(sp, user, trackURIs, features, mood, model, frame):
             print("Couldn't add cover image to playlist")
 
     sp.user_playlist_add_tracks(userID, playlistID, playlistSongs)
+    print(playlistID)
+    return playlistID
 
 
 def main(sp, user, model, mood, frame):
     trackURIs, tracks = getUserTracks(sp)
     features = getAudioFeatures(sp, trackURIs)
-    createPlaylist(sp, user, trackURIs, features, mood, model, frame)
+    playlist_id = createPlaylist(sp, user, trackURIs, features, mood, model, frame)
+    open_playlist.openPlaylist(playlist_id)
