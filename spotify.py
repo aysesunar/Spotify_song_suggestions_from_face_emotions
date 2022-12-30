@@ -1,6 +1,7 @@
 import spotipy
 import createPlaylist
 import learnSongs
+from face_emotion_detection.emotion_detector_from_image import emotion_detector_from_image
 
 
 def run():
@@ -29,7 +30,9 @@ def run():
     if token:
         sp = spotipy.Spotify(auth=token)
         user = sp.current_user()
-        mood = "sad" #here use the result of face emotion detection part
+        detector = emotion_detector_from_image()
+        mood, cap = detector.detect_emotion() # "sad" #here use the result of face emotion detection part
+        print(f'Mood is {mood}')
         model = learnSongs.main()
         createPlaylist.main(sp, user, model, mood)
         print("Successfully created playlist!")
