@@ -42,8 +42,8 @@ class emotion_detector_from_image:
             preds = emotion_model.predict(roi)[0]  # Yields one hot encoded result for 7 classes
             label = class_labels[preds.argmax()]  # Find the label
             label_position = (x, y)
-            cv2.putText(frame, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 255), 2)
             emotion = emotion_mapper[label]
+            cv2.putText(frame, emotion, label_position, cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 255), 2)
             print(f'predicted {emotion}')
 
         cv2.imshow('Emotion Detector', frame)
