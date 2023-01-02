@@ -4,7 +4,7 @@ import learnSongs
 from face_emotion_detection.emotion_detector_from_image import emotion_detector_from_image
 import open_playlist
 import json
-def main():
+def run():
     username = 'missframbuaz'
     clientID = '322a5c047ccb4515b49404ed0d8f6065'
     clientSecret = '7818fc966d344e6c82b36c7442f710ee'
