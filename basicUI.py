@@ -1,5 +1,5 @@
 from tkinter import *
-import spotify
+import spotify_merged_deren
 from PIL import ImageTk, Image
 
 def on_enter(e):
@@ -41,7 +41,7 @@ label.config(font=("Roboto", 14, 'bold'))
 label.pack()
 
 
-button = Button(window, text="Start", compound="center", height= 110, borderwidth=0, width=180, command=spotify.run)
+button = Button(window, text="Start", compound="center", height= 110, borderwidth=0, width=180, command=spotify_merged_deren.run)
 button.pack()
 button.config(font=('Roboto', 20, 'bold'))
 button.config(background='white')
